@@ -1,0 +1,33 @@
+{{ define "main" }}
+  <article class="sorandom-reader">
+    <h1>soRandom</h1>
+    <p class="home-subtitle" style="font-family: var(--font-ui); color: var(--color-text-light); font-size: 0.85rem; margin-bottom: 2rem;">
+      A randomized short fiction &mdash; each reading assembles a unique version of the story.
+      Click highlighted words to explore tangent passages.
+    </p>
+
+    <div class="sorandom-page-nav" id="sr-page-nav">
+      <button data-page="1" class="active">Part 1</button>
+      <button data-page="2">Part 2</button>
+      <button data-page="3">Part 3</button>
+    </div>
+
+    <div id="sr-tangent-bar" class="sorandom-tangent-header" style="display:none;">
+      <span>Tangent: &ldquo;<span id="sr-tangent-keyword"></span>&rdquo;</span>
+      <button id="sr-back-btn">Back to story</button>
+    </div>
+
+    <div id="sr-content"></div>
+
+    <div class="sorandom-controls">
+      <button id="sr-reshuffle">Reshuffle this page</button>
+    </div>
+  </article>
+{{ end }}
+
+{{ define "scripts" }}
+  <script>
+    var soRandomData = {{ site.Data.sorandom | jsonify | safeJS }};
+  </script>
+  <script src="{{ "js/sorandom.js" | relURL }}"></script>
+{{ end }}

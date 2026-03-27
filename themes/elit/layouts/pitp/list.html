@@ -1,0 +1,63 @@
+{{ define "main" }}
+  <article class="pitp-reader">
+    <h1>Pee in the Pool</h1>
+    <p class="home-subtitle" style="font-family: var(--font-ui); color: var(--color-text-light); font-size: 0.85rem; margin-bottom: 1.5rem;">
+      A participatory short fiction &mdash; audience comments are injected into the story text,
+      simulating the chaos of the original 2006 installation.
+    </p>
+
+    <div class="pitp-controls">
+      <div class="pitp-activity-display">
+        <span class="pitp-activity-label">Activity:</span>
+        <div class="pitp-activity-bar">
+          <div class="pitp-activity-fill" id="pitp-activity-fill"></div>
+        </div>
+        <span id="pitp-comment-count"></span>
+      </div>
+
+      <div class="pitp-slider-group">
+        <label for="pitp-slider">Override:</label>
+        <input type="range" id="pitp-slider" min="0" max="100" value="50">
+        <span id="pitp-slider-label">auto</span>
+        <span class="pitp-info-trigger" id="pitp-info-btn">?</span>
+        <div class="pitp-info-popover" id="pitp-info-popover">
+          <p><strong>What is this?</strong></p>
+          <p>The original <em>Pee in the Pool</em> was a live web application (2006). Audience members
+          submitted comments during readings and performances, which were randomly
+          inserted into the story text. During active events, the story would become
+          almost unreadable under a flood of contributions. During quiet periods,
+          the text was nearly clean.</p>
+          <p>This archive simulates that ebb and flow. By default, the number of
+          visible comments follows a time-of-day cycle: busier in the evenings
+          (when readings would happen) and quieter during the day. Use the slider
+          to manually override the activity level, from &ldquo;clean pool&rdquo; to
+          &ldquo;reading night.&rdquo;</p>
+        </div>
+      </div>
+
+      <button class="pitp-clean-toggle" id="pitp-clean-btn">Clean the pool</button>
+    </div>
+
+    <div class="pitp-chapter-nav" id="pitp-chapter-nav">
+      {{ range $i := seq 8 }}
+        <button data-chapter="{{ $i }}" {{ if eq $i 1 }}class="active"{{ end }}>Chapter {{ $i }}</button>
+      {{ end }}
+    </div>
+
+    <div id="pitp-content" class="pitp-story-text"></div>
+
+    <div class="pitp-chapter-nav" id="pitp-chapter-nav-bottom" style="margin-top: 2rem; margin-bottom: 0;">
+      {{ range $i := seq 8 }}
+        <button data-chapter="{{ $i }}" {{ if eq $i 1 }}class="active"{{ end }}>Chapter {{ $i }}</button>
+      {{ end }}
+    </div>
+  </article>
+{{ end }}
+
+{{ define "scripts" }}
+  <script>
+    var pitpStories = {{ site.Data.pitp_stories | jsonify | safeJS }};
+    var pitpComments = {{ site.Data.pitp_comments | jsonify | safeJS }};
+  </script>
+  <script src="{{ "js/pitp.js" | relURL }}"></script>
+{{ end }}

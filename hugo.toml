@@ -1,0 +1,16 @@
+baseURL = 'https://shawnr.github.io/elit-archive/'
+languageCode = 'en-us'
+title = 'Two Stories for Anybody'
+theme = 'elit'
+
+[params]
+  author = "Shawn Rider"
+  description = "Two Stories for Anybody — a diptych of electronic literature from 2006 by Shawn Rider: soRandom and Pee in the Pool"
+  year = 2006
+  license = "CC BY-NC-SA 4.0"
+  licenseURL = "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

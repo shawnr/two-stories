@@ -1,0 +1,19 @@
+{{ define "main" }}
+  <div class="home-header">
+    <h1>Two Stories for Anybody</h1>
+    <p class="home-subtitle">A diptych of electronic literature from 2006 by Shawn Rider</p>
+  </div>
+
+  <div class="piece-cards">
+    <a href="{{ "sorandom/" | relURL }}" class="piece-card">
+      <h3>soRandom</h3>
+      <p>A randomized hypertext narrative built on tagged content and chance. Each reading is different.</p>
+    </a>
+    <a href="{{ "pitp/" | relURL }}" class="piece-card">
+      <h3>Pee in the Pool</h3>
+      <p>A participatory fiction where audience comments flood into the story text, creating chaos by design.</p>
+    </a>
+  </div>
+
+  {{ .Content }}
+{{ end }}

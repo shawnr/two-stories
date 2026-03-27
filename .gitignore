@@ -1,0 +1,19 @@
+# Hugo build output
+public/
+resources/
+
+# Hugo lock file
+.hugo_build.lock
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Extracted intermediate files
+*_extracted.json
+
+# Decompressed SQL dump
+*.sql
+
+# Old site directory (moved to root)
+site/
